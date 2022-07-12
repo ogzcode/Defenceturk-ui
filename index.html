@@ -8,129 +8,26 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.4/dist/vue.js"></script>
 </head>
 
 <body>
-
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Contact</a>
-        <a href="#">About</a>
-    </nav>
-    <aside>
-        <a href="#" class="html">
-            <i class="fab fa-html5"></i>
-            HTML
-        </a>
-        <a href="#" class="css">
-            <i class="fab fa-css3"></i>
-            CSS
-        </a>
-        <a href="#" class="js">
-            <i class="fab fa-js-square"></i>
-            Javascript
-        </a>
-        <a href="#" class="python">
-            <i class="fab fa-python"></i>
-            Python
-        </a>
-        <a href="#" class="node">
-            <i class="fab fa-node-js"></i>
-            NodeJs
-        </a>
-    </aside>
-    <section>
-        <article>
-            <h1>My Article</h1>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolorem cupiditate cumque ullam explicabo molestias quidem quam
-                ipsum magni quaerat iure minima nam voluptatem quas, quia ducimus
-                numquam, veniam voluptas ab.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolorem cupiditate cumque ullam explicabo molestias quidem quam
-                ipsum magni quaerat iure minima nam voluptatem quas, quia ducimus
-                numquam, veniam voluptas ab.
-            </p>
-            <div>
-                <button>Read More</button>
-            </div>
-        </article>
-        <article>
-            <h1>My Article</h1>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolorem cupiditate cumque ullam explicabo molestias quidem quam
-                ipsum magni quaerat iure minima nam voluptatem quas, quia ducimus
-                numquam, veniam voluptas ab.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolorem cupiditate cumque ullam explicabo molestias quidem quam
-                ipsum magni quaerat iure minima nam voluptatem quas, quia ducimus
-                numquam, veniam voluptas ab.
-            </p>
-            <div>
-                <button>Read More</button>
-            </div>
-        </article>
-        <article>
-            <h1>My Article</h1>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolorem cupiditate cumque ullam explicabo molestias quidem quam
-                ipsum magni quaerat iure minima nam voluptatem quas, quia ducimus
-                numquam, veniam voluptas ab.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolorem cupiditate cumque ullam explicabo molestias quidem quam
-                ipsum magni quaerat iure minima nam voluptatem quas, quia ducimus
-                numquam, veniam voluptas ab.
-            </p>
-            <div>
-                <button>Read More</button>
-            </div>
-        </article>
-        <article>
-            <h1>My Article</h1>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolorem cupiditate cumque ullam explicabo molestias quidem quam
-                ipsum magni quaerat iure minima nam voluptatem quas, quia ducimus
-                numquam, veniam voluptas ab.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolorem cupiditate cumque ullam explicabo molestias quidem quam
-                ipsum magni quaerat iure minima nam voluptatem quas, quia ducimus
-                numquam, veniam voluptas ab.
-            </p>
-            <div>
-                <button>Read More</button>
-            </div>
-        </article>
-    </section>
-    <div class="email">
-        <p>Subscribe</p>
-        <input type="email" placeholder="Enter Email" />
-        <button>Send</button>
-    </div>
-    <div class="social">
-        <p>Contact With Me</p>
-        <div>
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-codepen"></i>
-            <i class="fab fa-google"></i>
+    <div id="app">
+        <nav-bar></nav-bar>
+        <aside-box></aside-box>
+        <main-blog></main-blog>
+        <div class="email">
+            <p>Subscribe</p>
+            <input type="email" placeholder="Enter Email" />
+            <button class="email__button btn">Send</button>
         </div>
+        <social></social>
+        <footer>
+            <p>Created by ogzCode &copy;2022</p>
+        </footer>
     </div>
-    <footer>
-        <p>Created by ogzCode @2022</p>
-    </footer>
+
+    <script src="app.js"></script>
 </body>
 
 </html>
