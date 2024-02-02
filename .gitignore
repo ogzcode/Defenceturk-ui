@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Dependency directories
+lib/
+libs/
+library/
+libraries/
+vendor/
+venv/
+env/
+
+# Build files
+build/
+dist/
+*.egg-info/
+*.egg
+*.exe
+*.dll
+*.so
+*.dylib
+*.pyc
+*.pyo
+*.pyd
+*.bak
+*.swp
+*.swo
+*.pyc
+*.pyo
+*.pyd
+*.bak
+*.swp
+*.swo
+*.log
+*.tmp
+*.tmp.*
+*.~*
+*~
+*.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.bak
+*.swp
+*.swo
+*.log
+*.tmp
+*.tmp.*
+*.~*
+*~
+*.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
