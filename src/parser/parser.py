@@ -17,9 +17,12 @@ class Parser:
         return self.data.find(id="boardindex_table").find(class_="table_list")
     
     def get_topic_page_data(self):
-        return self.data.find(id="messageindex")
+        return self.data.find(id="messageindex").find(class_="table_grid")
     
-    def get_message_page_data(self):
-        return self.data.find(id="forumposts")
+    def get_paginate(self):
+        return self.data.find(class_="pagesection")
+    
+    def get_post_page_data(self):
+        return self.data.find(id="forumposts").find(id="quickModForm")
 
 
