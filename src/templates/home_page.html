@@ -24,19 +24,23 @@
             style="display: none;">
 
             {% for content in item.content %}
-                {% if content.info or content.stats %}
-                    <div class="flex justify-between items-center border-b px-8 py-2 gap-x-8">
-                        <div class="">
-                            <a href="{{ content.info.link_href}}" class="text-lg font-semibold text-slate-800">{{
-                                content.info.link_content }}</a>
-                            <p class="text-base font-medium text-slate-600">{{ content.info.description }}</p>
-                        </div>
-                        <div class="min-w-32 text-sm">
-                            <p class="px-4 py-1 bg-sky-100 text-sky-800 rounded-full mb-2 text-center"><i class="fa-solid fa-comment"></i> {{ content.stats.post_count }}</p>
-                            <p class="px-4 py-1 bg-rose-100 text-rose-800 rounded-full text-center"><i class="fa-solid fa-bookmark"></i> {{ content.stats.topic_count }}</p>
-                        </div>
-                    </div>
-                {% endif %}
+            {% if content.info or content.stats %}
+            <div class="flex justify-between items-center border-b px-8 py-2 gap-x-8">
+                <div class="">
+                    <button class="text-lg font-semibold text-slate-800" data-url="{{ content.info.link_href }}"
+                        onclick="redirectToTopic('{{ content.info.link_href }}')">
+                        {{ content.info.link_content }}
+                    </button>
+                    <p class="text-base font-medium text-slate-600">{{ content.info.description }}</p>
+                </div>
+                <div class="min-w-32 text-sm">
+                    <p class="px-4 py-1 bg-sky-100 text-sky-800 rounded-full mb-2 text-center"><i
+                            class="fa-solid fa-comment"></i> {{ content.stats.post_count }}</p>
+                    <p class="px-4 py-1 bg-rose-100 text-rose-800 rounded-full text-center"><i
+                            class="fa-solid fa-bookmark"></i> {{ content.stats.topic_count }}</p>
+                </div>
+            </div>
+            {% endif %}
             {% endfor %}
         </div>
         {% endfor %}
@@ -65,6 +69,14 @@
         });
 
         element.classList.add('active-header');
+    }
+
+    function redirectToTopic(url) {
+        // Encode the URL parameter
+        const encodedUrl = encodeURIComponent(url);
+
+        // Redirect to the /topic route with the encoded URL parameter
+        window.location.href = `/topic?url=${encodedUrl}`;
     }
 </script>
 {% endblock %}
