@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+
+{% block styles %}
+<style>
+    .inner a {
+        text-decoration: underline !important;
+        color: #1d4ed8 !important;
+    }
+
+    blockquote {
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+        font-style: italic;
+        padding: 1rem;
+        margin: 1rem 0 !important;
+        font-size: 14px;
+
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="min-h-screen p-16">
+    <div class="flex items-center flex-col gap-8">
+        <h1 class="text-4xl font-bold text-slate-800">Posts</h1>
+        {% for post in data %}
+        <div class="w-1/2 border border-slate-300 p-4 rounded-lg">
+            <div>
+                <div class="border-b border-slate-300 pb-2 mb-4">
+                    <p class="text-slate-700 text-xl font-semibold mb-1">{{ post.author }}</p>
+                    <p class="text-slate-400 text-xs italic">{{ post.date }}</p>
+                </div>
+                <div class="text-slate-600">
+                    {{ post.content | safe }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="flex justify-center items-center mt-8 gap-4">
+        {% for page in paginate %}
+            <button onclick="redirectToPostPaginate('{{ page.href }}')"
+                class="w-10 h-10 flex justify-center items-center text-sm text-center rounded-full font-semibold 
+                        {% if page.active %} bg-sky-400 text-white {% else %} border border-slate-400 text-slate-600 {% endif %}">
+                {{ page.text }}
+            </button>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function redirectToPostPaginate(url) {
+        if (url === null || url === undefined || url === "") {
+            return;
+        }
+        
+        const encodedUrl = encodeURIComponent(url);
+        window.location.href = `/post?url=${encodedUrl}`;
+    }
+</script>
+
+{% endblock %}

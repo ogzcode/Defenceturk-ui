@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="min-h-screen p-16">
+    <div class="flex items-center flex-col gap-8">
+        <h1 class="text-4xl font-bold text-slate-800">Topics</h1>
+        {% for topic in data %}
+        <div class="w-1/2 border border-slate-300 p-4 rounded-lg">
+            <div class="flex justify-between items-center mb-2">
+                <p class="px-4 py-2 text-sm text-center rounded-full font-semibold bg-teal-100 text-teal-600"><i
+                        class="fa-solid fa-eye"></i> {{ topic.stats.views }}</p>
+                <p class="px-4 py-2 text-sm text-center rounded-full font-semibold bg-orange-100 text-orange-600"><i
+                        class="fa-regular fa-pen-to-square"></i> {{ topic.stats.replies }}</p>
+            </div>
+            <div class="flex flex-col justify-between h-fit">
+                <button class="text-lg font-semibold text-slate-700 text-left cursor-pointer "
+                    data-url="{{ topic.subject.href }}" onclick="redirectToPost('{{ topic.subject.href }}')">{{
+                    topic.subject.title }}</button>
+                <p class="text-left text-xs text-slate-400">{{ topic.last.last_post }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="flex justify-center items-center mt-8 gap-4">
+        {% for page in paginate %}
+            <button onclick="redirectToTopicPaginate('{{ page.href }}')"
+                class="w-10 h-10 flex justify-center items-center text-sm text-center rounded-full font-semibold 
+                        {% if page.active %} bg-sky-400 text-white {% else %} border border-slate-400 text-slate-600 {% endif %}">
+                {{ page.text }}
+            </button>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    function redirectToPost(url) {
+        const encodedUrl = encodeURIComponent(url);
+        window.location.href = `/post?url=${encodedUrl}`;
+    }
+
+    function redirectToTopicPaginate(url) {
+        const encodedUrl = encodeURIComponent(url);
+        window.location.href = `/topic?url=${encodedUrl}`;
+    }
+</script>
+{% endblock %}
