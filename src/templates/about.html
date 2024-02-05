@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="min-h-screen bg-slate-50 rounded-xl p-6">
+    <h1 class="text-2xl text-slate-800 font-bold">Hakkında</h1>
+    <p class="mt-2 text-slate-700 ">
+        Defencetürk'ten verileri Python ve BeautifulSoup kullanarak çekip daha kullanışlı bir arayüzde sunan bu projeyi,
+        kişisel bir hobi projesi olarak geliştirdim. Hedefim, Defencetürk'teki haberleri daha kolay erişilebilir ve
+        okunabilir hale getirmekti.
+    </p>
+    <h3 class="text-lg text-slate-800 mt-8 font-semibold">Projenin Özellikleri</h3>
+    <ul class="list-disc ml-4 mb-8">
+        <li class="text-slate-700 ">Defencetürk'ten otomatik veri çekme.</li>
+        <li class="text-slate-700 ">Konu ve alt başlıklarını görüntüleme.</li>
+        <li class="text-slate-700 ">Başlıkların post larını görüntüleme.</li>
+        <li class="text-slate-700 ">Daha kolay okuma deneyimi için optimize edilmiş arayüz.</li>
+    </ul>
+    <div class="bg-red-50 border border-red-500 rounded-lg p-4">
+        <h3 class="text-xl text-red-600 font-bold">Gelir Elde Etmeme:</h3>
+        <p class="text-red-500 mt-2">Bu projeden herhangi bir gelir elde etmiyorum. Tamamen ücretsiz ve açık kaynak kodlu bir projedir.</p>
+    </div>
+</div>
+{% endblock %}

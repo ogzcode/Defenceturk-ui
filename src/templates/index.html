@@ -3,6 +3,7 @@
 
 <head>
     <meta charset='utf-8'>
+    <link rel='icon' type='image/png' href="{{ url_for('static', filename='/img/logo.png')}}">
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Defence Turk UI</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -14,13 +15,12 @@
 </head>
 
 <body>
-    <nav class="bg-sky-500 p-4">
-        <div class="flex justify-between items-center">
-            <a href="/" class="text-white
-                font-bold text-xl">Anasayfa</a>
-        </div>  
-    </nav>
-    {% block content %}{% endblock %}
+    {% include './components/nav.html' %}
+    <div class="p-16">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% include "./components/footer.html" %}
 
     {% block scripts %}{% endblock %}
 </body>
