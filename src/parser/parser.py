@@ -24,5 +24,8 @@ class Parser:
     
     def get_post_page_data(self):
         return self.data.find(id="forumposts").find(id="quickModForm")
+    
+    def get_navigate_breadcrumb(self):
+        return self.data.find(class_="navigate_section")
 
 
