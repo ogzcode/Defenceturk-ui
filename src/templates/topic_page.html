@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<div class="min-h-screen p-16">
+<div class="min-h-screen">
+    {% include './components/breadcrumbs.html' %}
     <div class="flex items-center flex-col gap-8">
-        <h1 class="text-4xl font-bold text-slate-800">Topics</h1>
         {% for topic in data %}
-        <div class="w-1/2 border border-slate-300 p-4 rounded-lg">
+        <div class="w-full border border-slate-300 p-4 rounded-lg">
             <div class="flex justify-between items-center mb-2">
                 <p class="px-4 py-2 text-sm text-center rounded-full font-semibold bg-teal-100 text-teal-600"><i
                         class="fa-solid fa-eye"></i> {{ topic.stats.views }}</p>

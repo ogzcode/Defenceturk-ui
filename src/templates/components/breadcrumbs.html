@@ -1,0 +1,30 @@
+<div class="pb-2 mb-8 w-full mx-auto text-base border-b border-slate-200">
+    {% for nav in breadcrumb %}
+        {% if not loop.last %}
+            <button onclick="redirectTo('{{ nav.href }}', '{{ loop.index }}')" class="text-slate-700 hover:text-slate-800 font-semibold">{{
+                nav.title }}</button>
+            <span class="text-sm text-slate-600 mx-2"><i class="fa-solid fa-chevron-right"></i></span>
+        {% else %}
+            <button onclick="redirectTo('{{ nav.href }}', '{{ loop.index }}')" class="text-slate-700 hover:text-slate-800 font-semibold">
+                {{nav.title }}
+            </button>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<script>
+    function redirectTo(url, i) {
+        let index = parseInt(i);
+        const encodedUrl = encodeURIComponent(url);
+
+        if (index === 1 || index === 2) {
+            window.location.href = `/`;
+        }
+        else if (index === 3) {
+            window.location.href = `/topic?url=${encodedUrl}`;
+        }
+        else if (index === 4) {
+            window.location.href = `/post?url=${encodedUrl}`;
+        }
+    }
+</script>

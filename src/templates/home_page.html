@@ -7,43 +7,46 @@
     }
 </style>
 
-<div class="min-h-screen grid grid-cols-3 p-16 gap-x-8">
-    <div class="col-span-1">
-        <ul class="border border-slate-300 rounded-xl overflow-hidden">
-            {% for header in data %}
-            <li>
-                <button class="text-left border-b p-4 hover:bg-slate-100 w-full font-semibold text-slate-700"
-                    data-title="{{ header.title }}" onclick="showContentPanel(this)">{{ header.title }}</button>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div class="col-span-2">
-        {% for item in data %}
-        <div id="{{ item.title }}" class="content-panel border border-slate-300 h-auto rounded-xl overflow-y-auto"
-            style="display: none;">
+<div class="min-h-screen">
+    {% include './components/breadcrumbs.html' %}
+    <div class="grid grid-cols-3 gap-x-8">
+        <div class="col-span-1">
+            <ul class="border border-slate-300 rounded-xl overflow-hidden">
+                {% for header in data %}
+                <li>
+                    <button class="text-left border-b p-4 hover:bg-slate-100 w-full font-semibold text-slate-700"
+                        data-title="{{ header.title }}" onclick="showContentPanel(this)">{{ header.title }}</button>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-span-2">
+            {% for item in data %}
+            <div id="{{ item.title }}" class="content-panel border border-slate-300 h-auto rounded-xl overflow-y-auto"
+                style="display: none;">
 
-            {% for content in item.content %}
-            {% if content.info or content.stats %}
-            <div class="flex justify-between items-center border-b px-8 py-2 gap-x-8">
-                <div class="">
-                    <button class="text-lg font-semibold text-slate-800" data-url="{{ content.info.link_href }}"
-                        onclick="redirectToTopic('{{ content.info.link_href }}')">
-                        {{ content.info.link_content }}
-                    </button>
-                    <p class="text-base font-medium text-slate-600">{{ content.info.description }}</p>
+                {% for content in item.content %}
+                {% if content.info or content.stats %}
+                <div class="flex justify-between items-center border-b px-8 py-2 gap-x-8">
+                    <div class="">
+                        <button class="text-lg font-semibold text-slate-800" data-url="{{ content.info.link_href }}"
+                            onclick="redirectToTopic('{{ content.info.link_href }}')">
+                            {{ content.info.link_content }}
+                        </button>
+                        <p class="text-base font-medium text-slate-600">{{ content.info.description }}</p>
+                    </div>
+                    <div class="min-w-32 text-sm">
+                        <p class="px-4 py-1 bg-sky-100 text-sky-800 rounded-full mb-2 text-center"><i
+                                class="fa-solid fa-comment"></i> {{ content.stats.post_count }}</p>
+                        <p class="px-4 py-1 bg-rose-100 text-rose-800 rounded-full text-center"><i
+                                class="fa-solid fa-bookmark"></i> {{ content.stats.topic_count }}</p>
+                    </div>
                 </div>
-                <div class="min-w-32 text-sm">
-                    <p class="px-4 py-1 bg-sky-100 text-sky-800 rounded-full mb-2 text-center"><i
-                            class="fa-solid fa-comment"></i> {{ content.stats.post_count }}</p>
-                    <p class="px-4 py-1 bg-rose-100 text-rose-800 rounded-full text-center"><i
-                            class="fa-solid fa-bookmark"></i> {{ content.stats.topic_count }}</p>
-                </div>
+                {% endif %}
+                {% endfor %}
             </div>
-            {% endif %}
             {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </div>
 
@@ -72,10 +75,7 @@
     }
 
     function redirectToTopic(url) {
-        // Encode the URL parameter
         const encodedUrl = encodeURIComponent(url);
-
-        // Redirect to the /topic route with the encoded URL parameter
         window.location.href = `/topic?url=${encodedUrl}`;
     }
 </script>
