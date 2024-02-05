@@ -2,15 +2,23 @@ from flask import render_template, request
 from src import app
 from src.parser import Parser, HomePageParser, TopicPageParser, PostPageParser, PaginateParser, NavigateParser
 
+def get_navigate_data(parser):
+    navigate_breadcrumb = parser.get_navigate_breadcrumb()
+    navigate_parser = NavigateParser(navigate_breadcrumb)
+    return navigate_parser.parse_navigate()
+
+def get_paginate_data(parser):
+    paginate = parser.get_paginate()
+    paginate_parser = PaginateParser(paginate)
+    return paginate_parser.get_parsed_paginate()
+
 
 @app.route("/")
 def home():
     parser = Parser()
     parser.request_to_page("http://www.defenceturk.com/index.php")
 
-    navigate_breadcrumb = parser.get_navigate_breadcrumb()
-    navigate_parser = NavigateParser(navigate_breadcrumb)
-    navigate_data = navigate_parser.parse_navigate()
+    navigate_data = get_navigate_data(parser)
 
     main_page_data = parser.get_home_page_data()
 
@@ -28,13 +36,8 @@ def topic():
     parser = Parser()
     parser.request_to_page(url_for_parse)
 
-    navigate_breadcrumb = parser.get_navigate_breadcrumb()
-    navigate_parser = NavigateParser(navigate_breadcrumb)
-    navigate_data = navigate_parser.parse_navigate()
-
-    paginate = parser.get_paginate()
-    paginate_parser = PaginateParser(paginate)
-    paginate_data = paginate_parser.get_parsed_paginate()
+    navigate_data = get_navigate_data(parser)
+    paginate_data = get_paginate_data(parser)
 
     topic_page_data = parser.get_topic_page_data()
     topic_page_parser = TopicPageParser(topic_page_data)
@@ -49,13 +52,8 @@ def post():
     parser = Parser()
     parser.request_to_page(url_for_parse)
 
-    navigate_breadcrumb = parser.get_navigate_breadcrumb()
-    navigate_parser = NavigateParser(navigate_breadcrumb)
-    navigate_data = navigate_parser.parse_navigate()
-
-    paginate = parser.get_paginate()
-    paginate_parser = PaginateParser(paginate)
-    paginate_data = paginate_parser.get_parsed_paginate()
+    navigate_data = get_navigate_data(parser)
+    paginate_data = get_paginate_data(parser)
 
     post_page_data = parser.get_post_page_data()
 
